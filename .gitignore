@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Model files (large files)
+*.pth
+checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

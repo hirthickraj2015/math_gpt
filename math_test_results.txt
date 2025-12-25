@@ -1,0 +1,111 @@
+================================================================================
+MODEL TEST RESULTS
+================================================================================
+
+Test 1:
+  Input:     5+3
+  Predicted: 0
+  Expected:  8 ✗
+
+Test 2:
+  Input:     12+7
+  Predicted: 2
+  Expected:  19 ✗
+
+Test 3:
+  Input:     25+38
+  Predicted: 83
+  Expected:  63 ✗
+
+Test 4:
+  Input:     10-3
+  Predicted: 38
+  Expected:  7 ✗
+
+Test 5:
+  Input:     20-15
+  Predicted: 0
+  Expected:  5 ✗
+
+Test 6:
+  Input:     50-27
+  Predicted: 104
+  Expected:  23 ✗
+
+Test 7:
+  Input:     6*8
+  Predicted: 
+  Expected:  48 ✗
+
+Test 8:
+  Input:     7*7
+  Predicted: 
+  Expected:  49 ✗
+
+Test 9:
+  Input:     12*3
+  Predicted: -1
+  Expected:  36 ✗
+
+Test 10:
+  Input:     20//4
+  Predicted: 88
+  Expected:  5 ✗
+
+Test 11:
+  Input:     15//3
+  Predicted: 24
+  Expected:  5 ✗
+
+Test 12:
+  Input:     100//10
+  Predicted: -39
+  Expected:  10 ✗
+
+Test 13:
+  Input:     17%5
+  Predicted: 31
+  Expected:  2 ✗
+
+Test 14:
+  Input:     20%6
+  Predicted: 40
+  Expected:  2 ✗
+
+Test 15:
+  Input:     15%4
+  Predicted: 58
+  Expected:  3 ✗
+
+Test 16:
+  Input:     (3+2)*4
+  Predicted: 20
+  Expected:  20 ✓
+
+Test 17:
+  Input:     (10-3)*2
+  Predicted: 2
+  Expected:  14 ✗
+
+Test 18:
+  Input:     (5+5)//2
+  Predicted: 5082
+  Expected:  5 ✗
+
+Test 19:
+  Input:     10+(5*2)
+  Predicted: 112
+  Expected:  20 ✗
+
+Test 20:
+  Input:     20-(3*4)
+  Predicted: 22
+  Expected:  8 ✗
+
+Test 21:
+  Input:     ((2+3)*4)+1
+  Predicted: -9
+  Expected:  21 ✗
+
+
+Accuracy: 1/21 (4.8%)
