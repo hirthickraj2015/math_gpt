@@ -25,4 +25,4 @@ checkpoints/
 *.swp
 *.swo
 
-./wandb/
+wandb
