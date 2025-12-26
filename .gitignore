@@ -24,3 +24,5 @@ checkpoints/
 .idea/
 *.swp
 *.swo
+
+./wandb/
