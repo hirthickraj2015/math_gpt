@@ -1,0 +1,77 @@
+Dataset Statistics:
+  Training set size: 25,657 characters
+  Testing set size: 2,880 characters
+  Training examples: 3,436
+  Testing examples: 382
+
+Sample expressions from training set:
+  6+3+2=11
+  0+0=0
+  5+8+4=17
+  1//4=0
+  5//8=0
+  8*5+8=48
+  7+5+5=17
+  9//3=3
+  5+1+7=13
+  6%5=1
+Vocabulary:
+  Size: 19
+  Characters:
+ % ( ) * + - / 0 1 2 3 4 5 6 7 8 9 =
+
+Example encoding:
+  Original: 5+3=8
+  Encoded: [13, 5, 11, 18, 16]
+  Decoded: 5+3=8
+Encoded datasets:
+  Train tensor shape: torch.Size([25657])
+  Test tensor shape: torch.Size([2880])
+
+Model Architecture:
+  Total parameters: 800,787 (0.80M)
+  Vocabulary size: 19
+  Embedding dimension: 128
+  Number of layers: 4
+  Number of heads: 4
+
+Model loaded on: mps
+Starting training...
+Total iterations: 10000
+Evaluation interval: 500
+------------------------------------------------------------
+Iter     0 | Train loss: 2.9887 | Test loss: 2.9832 | Time: 5.5s
+  New best model saved! (test loss: 2.9832)
+Iter   500 | Train loss: 1.3061 | Test loss: 1.3353 | Time: 33.9s
+Iter  1000 | Train loss: 1.1756 | Test loss: 1.2461 | Time: 56.8s
+  New best model saved! (test loss: 1.2461)
+Iter  1500 | Train loss: 1.0897 | Test loss: 1.2223 | Time: 78.4s
+Iter  2000 | Train loss: 0.9607 | Test loss: 1.2877 | Time: 99.4s
+Iter  2500 | Train loss: 0.7498 | Test loss: 1.4919 | Time: 124.7s
+Iter  3000 | Train loss: 0.5329 | Test loss: 1.7424 | Time: 144.3s
+Iter  3500 | Train loss: 0.4095 | Test loss: 2.0479 | Time: 164.1s
+Iter  4000 | Train loss: 0.3534 | Test loss: 2.2309 | Time: 183.8s
+Iter  4500 | Train loss: 0.3293 | Test loss: 2.3610 | Time: 204.0s
+Iter  5000 | Train loss: 0.3116 | Test loss: 2.5198 | Time: 223.7s
+Iter  5500 | Train loss: 0.3018 | Test loss: 2.6812 | Time: 243.5s
+Iter  6000 | Train loss: 0.2968 | Test loss: 2.7208 | Time: 263.2s
+Iter  6500 | Train loss: 0.2938 | Test loss: 2.7473 | Time: 282.9s
+Iter  7000 | Train loss: 0.2892 | Test loss: 2.7498 | Time: 302.6s
+Iter  7500 | Train loss: 0.2850 | Test loss: 2.8780 | Time: 322.3s
+Iter  8000 | Train loss: 0.2835 | Test loss: 2.9263 | Time: 342.0s
+Iter  8500 | Train loss: 0.2795 | Test loss: 2.9730 | Time: 361.9s
+Iter  9000 | Train loss: 0.2781 | Test loss: 2.9940 | Time: 382.2s
+Iter  9500 | Train loss: 0.2767 | Test loss: 3.0676 | Time: 402.3s
+Iter  9999 | Train loss: 0.2760 | Test loss: 3.0580 | Time: 422.5s
+------------------------------------------------------------
+Training complete!
+Best test loss: 1.2223
+Final train loss: 0.2760
+Final test loss: 3.0580
+Total training time: 422.5s
+Model saved as: model_weights_part1.pth
+
+To load this model:
+  model = GPTLanguageModel()
+  model.load_state_dict(torch.load('model_weights_part1.pth'))
+  model.eval()

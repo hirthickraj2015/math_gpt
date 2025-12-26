@@ -61,9 +61,10 @@ def evaluate_exact_match(
                 generated = model.generate(context, max_new_tokens=len(expected)+10, temperature=temperature)
                 prediction = decode(generated[0].tolist())
 
+                print(prediction)
                 # Extract predicted answer
                 if '=' in prediction:
-                    predicted = prediction.split('=')[1].split('\\n')[0].strip()
+                    predicted = prediction.split('=')[1].split('\n')[0].strip()
                 else:
                     predicted = ""
 
@@ -313,7 +314,8 @@ def plot_expression_length_distribution(
     plt.show()
 
     # Print statistics
-    print(f"\\nExpression length statistics:") print(f"  Mean: {np.mean(lengths):.1f} characters")
+    print(f"\\nExpression length statistics:") 
+    print(f"  Mean: {np.mean(lengths):.1f} characters")
     print(f"  Median: {np.median(lengths):.1f} characters")
     print(f"  Max: {np.max(lengths)} characters")
     print(f"  95th percentile: {np.percentile(lengths, 95):.1f} characters")
