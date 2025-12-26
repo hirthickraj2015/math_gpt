@@ -61,7 +61,6 @@ def evaluate_exact_match(
                 generated = model.generate(context, max_new_tokens=len(expected)+10, temperature=temperature)
                 prediction = decode(generated[0].tolist())
 
-                print(prediction)
                 # Extract predicted answer
                 if '=' in prediction:
                     predicted = prediction.split('=')[1].split('\n')[0].strip()

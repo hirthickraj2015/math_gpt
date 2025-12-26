@@ -1,0 +1,6 @@
+{"time":"2025-12-26T22:14:12.877666Z","level":"INFO","msg":"stream: starting","core version":"0.23.1"}
+{"time":"2025-12-26T22:14:13.202775Z","level":"INFO","msg":"stream: created new stream","id":"acve20ls"}
+{"time":"2025-12-26T22:14:13.203016Z","level":"INFO","msg":"handler: started","stream_id":"acve20ls"}
+{"time":"2025-12-26T22:14:13.20479Z","level":"INFO","msg":"writer: started","stream_id":"acve20ls"}
+{"time":"2025-12-26T22:14:13.204802Z","level":"INFO","msg":"sender: started","stream_id":"acve20ls"}
+{"time":"2025-12-26T22:14:13.205184Z","level":"INFO","msg":"stream: started","id":"acve20ls"}

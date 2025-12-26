@@ -18,6 +18,7 @@ def _():
     import time
     from tqdm import tqdm
     import wandb
+    import evaluation_utils as eval_utils
 
     # Set random seeds for reproducibility
     torch.manual_seed(1337)
@@ -36,7 +37,7 @@ def _():
     print(f"Using device: {device}")
     if device == 'cuda':
         print(f"GPU: {torch.cuda.get_device_name(0)}")
-    return F, device, nn, os, time, torch, wandb
+    return F, device, eval_utils, nn, os, time, torch, wandb
 
 
 @app.cell
@@ -44,7 +45,7 @@ def _(os, wandb):
     # Model hyperparameters
     batch_size = 64          # Number of independent sequences processed in parallel
     block_size = 32          # Maximum context length - reduced from 256 as math expressions are short
-    max_iters = 10000        # Total training iterations
+    max_iters = 20000        # Total training iterations
     eval_interval = 500      # Evaluate every N iterations
     learning_rate = 5e-4     # Learning rate - slightly higher than default for faster convergence
     eval_iters = 200         # Number of iterations to average for loss estimation
@@ -52,6 +53,7 @@ def _(os, wandb):
     n_head = 4               # Number of attention heads
     n_layer = 4              # Number of transformer blocks
     dropout = 0.1            # Dropout rate for regularization
+    eval_samples = 100       # Number of samples for accuracy evaluation during training
 
     # Checkpoint configuration
     checkpoint_dir = 'checkpoints'
@@ -91,6 +93,7 @@ def _(os, wandb):
         dropout,
         eval_interval,
         eval_iters,
+        eval_samples,
         learning_rate,
         max_iters,
         n_embd,
@@ -102,8 +105,8 @@ def _(os, wandb):
 @app.cell
 def _():
     # Load datasets
-    train_path = 'dataset/math/training/math_train.txt'
-    test_path = 'dataset/math/testing/math_test.txt'
+    train_path = 'dataset/math_v2/training/math_train.txt'
+    test_path = 'dataset/math_v2/testing/math_test.txt'
 
     with open(train_path, 'r', encoding='utf-8') as f:
         train_text = f.read()
@@ -124,7 +127,10 @@ def _():
     print(f"\nSample expressions from training set:")
     for i, line in enumerate(train_text.split('\n')[:10]):
         print(f"  {line}")
-    return full_text, test_text, train_text
+
+    # Prepare list of test expressions for exact match evaluation
+    test_expressions = [line for line in test_text.split('\n') if line.strip()]
+    return full_text, test_expressions, test_text, train_text
 
 
 @app.cell
@@ -460,19 +466,26 @@ def _(mo):
 
 @app.cell
 def _(
+    decode,
+    device,
+    encode,
     estimate_loss,
     eval_interval,
+    eval_samples,
+    eval_utils,
     get_batch,
     learning_rate,
     max_iters,
     model,
     save_checkpoint,
+    test_expressions,
     time,
     torch,
     wandb,
 ):
     # Initialize optimizer
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=max_iters)
 
     # Training history
     train_losses = []
@@ -491,17 +504,35 @@ def _(
         # Evaluate periodically
         if iter % eval_interval == 0 or iter == max_iters - 1:
             losses = estimate_loss()
+
+            # Calculate accuracy using generation
+            print(f"Evaluating accuracy at iteration {iter}...")
+            accuracy, results = eval_utils.evaluate_exact_match(
+                model, 
+                test_expressions, 
+                encode, 
+                decode, 
+                device=device, 
+                max_samples=eval_samples,
+                temperature=0.8
+            )
+
+            # Calculate digit accuracy
+            digit_acc = eval_utils.calculate_digit_accuracy(results)
+
             train_losses.append(losses['train'])
             test_losses.append(losses['test'])
             iterations.append(iter)
 
             elapsed = time.time() - start_time
-            print(f"Iter {iter:5d} | Train loss: {losses['train']:.4f} | Test loss: {losses['test']:.4f} | Time: {elapsed:.1f}s")
+            print(f"Iter {iter:5d} | Train loss: {losses['train']:.4f} | Test loss: {losses['test']:.4f} | Accuracy: {accuracy:.1f}% | Digit Acc: {digit_acc:.1f}% | Time: {elapsed:.1f}s")
 
             # Log to wandb
             wandb.log({
                 "train/loss": losses['train'],
                 "test/loss": losses['test'],
+                "test/accuracy": accuracy,
+                "test/digit_accuracy": digit_acc,
                 "iter": iter,
                 "elapsed_time": elapsed
             }, step=iter)
@@ -520,6 +551,7 @@ def _(
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         optimizer.step()
+        scheduler.step()
 
         # Log training loss to wandb
         wandb.log({"train/step_loss": loss.item()}, step=iter)
@@ -538,7 +570,6 @@ def _(
     print(f"Final train loss: {train_losses[-1]:.4f}")
     print(f"Final test loss: {test_losses[-1]:.4f}")
     print(f"Total training time: {time.time() - start_time:.1f}s")
-
     return
 
 
@@ -607,9 +638,9 @@ def _(decode, device, encode, model, test_list, torch):
     weights = torch.load('model_weights_part1.pth', map_location=device)
     model.load_state_dict(weights)
 
-    accuracy, results = evaluate_exact_match(model, test_list, encode, decode, device=device)
+    final_accuracy, final_results = evaluate_exact_match(model, test_list, encode, decode, device=device)
 
-    print(f"Total Accuracy: {accuracy:.2f}%")
+    print(f"Total Accuracy: {final_accuracy:.2f}%")
     return
 
 

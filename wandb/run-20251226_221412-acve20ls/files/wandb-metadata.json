@@ -1,0 +1,37 @@
+{
+  "os": "macOS-26.3-arm64-arm-64bit",
+  "python": "CPython 3.12.11",
+  "startedAt": "2025-12-26T22:14:12.865944Z",
+  "program": "/Users/arjunprakashrao/Drive/projects/math_gpt/playground.py",
+  "codePath": "playground.py",
+  "codePathLocal": "playground.py",
+  "git": {
+    "remote": "https://github.com/hirthickraj2015/math_gpt.git",
+    "commit": "c7d0c445a1b300a88f7a49f9947b69d38a73663d"
+  },
+  "email": "arjunprakash027@gmail.com",
+  "root": "/Users/arjunprakashrao/Drive/projects/math_gpt",
+  "host": "MacBookAir",
+  "executable": "/Users/arjunprakashrao/Drive/projects/math_gpt/.venv/bin/python",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "245075738624",
+      "used": "136171012096"
+    }
+  },
+  "memory": {
+    "total": "8589934592"
+  },
+  "apple": {
+    "name": "Apple M1",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 7,
+    "memoryGb": 8,
+    "swapTotalBytes": "8589934592",
+    "ramTotalBytes": "8589934592"
+  },
+  "writerId": "by9tkt6i5hz6jd01f5khbmomardwly1m"
+}
