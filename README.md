@@ -1,16 +1,15 @@
 # Math and Boolean GPT
 ## CS7CS4 Machine Learning - Final Assignment 2025-26
 
-This repository implements transformer-based models for solving:
-1. **Arithmetic expressions** (Math GPT)
-2. **Boolean logic expressions** (Boolean GPT)
+Transformer-based models for symbolic reasoning tasks: arithmetic expressions and boolean logic.
 
 ## Project Structure
 
 ```
-├── 1_dataset_generation.ipynb    # Generate training/testing datasets
-├── 2_math_gpt.ipynb              # Part 1: Math GPT implementation
-├── 3_boolean_gpt.ipynb           # Part 2: Boolean GPT implementation
+├── 1_dataset_generation.ipynb    # Generate math and boolean datasets
+├── 2_math_gpt.ipynb              # Train Math GPT model
+├── 3_boolean_gpt.ipynb           # Train Boolean GPT model
+├── 4_evaluation.ipynb            # Comprehensive evaluation & analysis
 ├── dataset/
 │   ├── math/
 │   │   ├── training/math_train.txt
@@ -18,147 +17,163 @@ This repository implements transformer-based models for solving:
 │   └── boolean/
 │       ├── training/boolean_train.txt
 │       └── testing/boolean_test.txt
-├── model_weights_part1.pth       # Trained Math GPT model
-├── model_weights_part2.pth       # Trained Boolean GPT model (after running notebook 3)
-├── requirements.txt              # Python dependencies
-└── README.md
+├── model_weights_part1.pth    # Trained Math GPT model
+├── model_weights_part2.pth    # Trained Boolean GPT model
+└── requirements.txt           # Python dependencies
 ```
 
-## Installation
+## Quick Start
 
-1. Clone the repository:
-```bash
-git clone https://github.com/hirthickraj2015/math_gpt.git
-cd math_gpt
-```
+### 1. Install Dependencies
 
-2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+### 2. Generate Datasets
 
-### Step 1: Generate Datasets (Optional - datasets included)
 ```bash
 jupyter notebook 1_dataset_generation.ipynb
 ```
-Run all cells to generate fresh datasets for both tasks.
 
-### Step 2: Train Math GPT (Part 1)
+Run all cells to generate comprehensive datasets for both math and boolean tasks.
+
+### 3. Train Models
+
+Train the Math GPT:
 ```bash
 jupyter notebook 2_math_gpt.ipynb
 ```
-Run all cells to train the arithmetic model. This will:
-- Load the math dataset
-- Train a transformer model
-- Evaluate on test set
-- Save `model_weights_part1.pth`
 
-### Step 3: Train Boolean GPT (Part 2)
+Train the Boolean GPT:
 ```bash
 jupyter notebook 3_boolean_gpt.ipynb
 ```
-Run all cells to train the boolean logic model. This will:
-- Load the boolean dataset
-- Train a transformer model
-- Evaluate on test set
-- Save `model_weights_part2.pth`
+
+### 4. Evaluate and Analyze
+
+```bash
+jupyter notebook 4_evaluation.ipynb
+```
+
+This generates comprehensive evaluation results addressing all assignment tasks:
+- Task 1.2 & 2.2: Evaluation metrics
+- Task 1.4 & 2.4: Operation-specific analysis
+- Task 3.1: Critical comparison
 
 ## Model Architecture
 
-### Math GPT
+Both models use a GPT-style transformer architecture with **task-specific adaptations**:
+
+### Math GPT:
+- **Vocabulary**: Character-level tokenization (19 characters)
 - **Embedding dimension**: 64
-- **Layers**: 2
-- **Attention heads**: 4
-- **Block size**: 32
-- **Parameters**: ~166K
+- **Layers**: 2 transformer blocks
+- **Attention heads**: 4 multi-head attention
+- **Block size**: 32 (context window)
+- **Dropout**: 0.1
+- **Parameters**: ~0.2M (small, efficient)
 
-### Boolean GPT
+### Boolean GPT:
+- **Vocabulary**: Character-level tokenization (15 characters)
 - **Embedding dimension**: 32
-- **Layers**: 2
-- **Attention heads**: 2
-- **Block size**: 48
-- **Parameters**: ~45K
+- **Layers**: 2 transformer blocks
+- **Attention heads**: 2 multi-head attention
+- **Block size**: 48 (context window)
+- **Dropout**: 0.05
+- **Parameters**: ~0.03M (very small, efficient)
 
-Both models use transformer architecture with:
-- Multi-head self-attention
-- Feed-forward networks
-- Layer normalization
-- Residual connections
+### Design Rationale:
 
-## Dataset Details
+1. **Character-level tokenization**: Each digit/operator/boolean is atomic and meaningful
+2. **Small embeddings**: Limited vocabulary doesn't require large embeddings
+3. **Shallow architecture**: Symbolic tasks simpler than natural language
+4. **Small block size**: Most expressions < 32 characters
+5. **Task-specific sizing**: Boolean logic is simpler, so smaller model suffices
 
-### Math Dataset
-- **Training**: ~2,000 expressions
-- **Testing**: ~200 expressions
+## Dataset Statistics
+
+### Math Dataset:
+- **Training**: ~90,000 expressions
+- **Testing**: ~10,000 expressions
 - **Operations**: +, -, *, //, %
-- **Range**: Single-digit (0-9) focused
-- **Complexity**: Simple to moderate (with parentheses)
+- **Complexity**: Single digit to multi-operation with parentheses
 
-### Boolean Dataset
-- **Training**: ~1,000 expressions
-- **Testing**: ~100 expressions
+### Boolean Dataset:
+- **Training**: ~9,000 expressions
+- **Testing**: ~1,000 expressions
 - **Operations**: AND, OR, XOR, NOT
-- **Values**: True, False
-- **Complexity**: Simple to complex (with parentheses)
+- **Complexity**: Single to nested operations with parentheses
 
 ## Evaluation Metrics
 
-Both models are evaluated using:
+See `4_evaluation.py` for comprehensive metrics:
+
 1. **Exact Match Accuracy**: Percentage of completely correct answers
 2. **Character-Level Accuracy**: Partial credit for partially correct answers
 3. **Operation-Specific Accuracy**: Breakdown by operation type
-4. **Error Analysis**: Common failure patterns
+4. **Error Pattern Analysis**: Common failure modes
+5. **Generalization Metrics**: Test vs. training performance
 
-## Loading Pre-trained Models
+## Outputs for Report
 
-```python
-import torch
-from model_code import GPTLanguageModel
+The evaluation notebook (`4_evaluation.ipynb`) generates:
 
-# Load Math GPT
-model = GPTLanguageModel()
-model.load_state_dict(torch.load('model_weights_part1.pth'))
-model.eval()
+1. **evaluation_results.txt**: Detailed results with example predictions
+2. **evaluation_comparison.png**: Visualizations comparing both models
+3. **Markdown-formatted analysis**: Can be copied directly into the report
 
-# Load Boolean GPT
-model = GPTLanguageModel()
-model.load_state_dict(torch.load('model_weights_part2.pth'))
-model.eval()
-```
+These outputs directly address all evaluation questions from the assignment PDF.
 
-## Requirements
+## Assignment Tasks Coverage
 
-- Python 3.8+
-- PyTorch 2.0+
-- NumPy
-- Matplotlib
-- Seaborn
-- Jupyter
+### Part 1: Math GPT (46 marks)
 
-## Assignment Tasks Completed
+- **Task 1.1** (8 marks): Dataset generation - See `1_dataset_generation.ipynb`
+- **Task 1.2** (8 marks): Evaluation metrics - See `4_evaluation.ipynb`
+- **Task 1.3** (15 marks): Architectural adaptations - See `2_math_gpt.ipynb`
+- **Task 1.4** (15 marks): Operation analysis - See `4_evaluation.ipynb`
 
-### Part 1: Math GPT
-- ✅ Task 1.1: Built appropriate training/testing datasets
-- ✅ Task 1.2: Defined evaluation metrics (exact match, character-level, operation-specific)
-- ✅ Task 1.3: Explored architectural adaptations (embedding size, layers, heads, tokenization)
-- ✅ Task 1.4: Analyzed performance across different arithmetic operations
+### Part 2: Boolean GPT (46 marks)
 
-### Part 2: Boolean GPT
-- ✅ Task 2.1: Built appropriate training/testing datasets
-- ✅ Task 2.2: Defined evaluation metrics
-- ✅ Task 2.3: Explored architectural adaptations
-- ✅ Task 2.4: Analyzed performance across different boolean operations
+- **Task 2.1** (8 marks): Dataset generation - See `1_dataset_generation.ipynb`
+- **Task 2.2** (8 marks): Evaluation metrics - See `4_evaluation.ipynb`
+- **Task 2.3** (15 marks): Architectural adaptations - See `3_boolean_gpt.ipynb`
+- **Task 2.4** (15 marks): Operation analysis - See `4_evaluation.ipynb`
 
-### Part 3: Discussion
-- Architectural comparison between Math and Boolean GPT
-- Analysis of what works and what doesn't
-- Discussion of design choices and their impact
+### Part 3: Discussion (8 marks)
+
+- **Task 3.1** (8 marks): Critical comparison - See `4_evaluation.ipynb`
+
+## Submission Checklist
+
+- [ ] PDF report (5-8 pages) with analysis
+- [ ] `model_weights_part1.pth` (Math GPT)
+- [ ] `model_weights_part2.pth` (Boolean GPT)
+- [ ] Appendix with code (from notebook exports)
+- [ ] Appendix with prompt-output examples (from `evaluation_results.txt`)
+- [ ] ZIP file with all code and data
+
+## Key Features
+
+- **Clean structure**: 4 focused Jupyter notebooks
+- **Comprehensive evaluation**: Addresses all assignment tasks
+- **Report-ready output**: Formatted text and visualizations for direct use
+- **Well-documented**: Clear explanations and reasoning
+- **Reproducible**: Fixed random seeds, saved models
+
+## Dependencies
+
+See `requirements.txt` for full list. Main dependencies:
+- `torch` - Deep learning framework
+- `jupyter` - Interactive notebook environment
+- `numpy` - Numerical computing
+- `matplotlib` - Plotting
+- `seaborn` - Statistical visualizations
 
 ## Author
 
-Hirthick Raj - Trinity College Dublin
+CS7CS4 Student - Trinity College Dublin
 
 ## License
 

@@ -1,0 +1,79 @@
+======================================================================
+MATH GPT - SAMPLE PROMPT-OUTPUT PAIRS
+======================================================================
+
+Correct Predictions (Strengths):
+----------------------------------------------------------------------
+Prompt: 6*(3+4)=
+Output: 42 ✓
+
+Prompt: 0//8=
+Output: 0 ✓
+
+Prompt: 8//9=
+Output: 0 ✓
+
+Prompt: (1-8)*9=
+Output: -63 ✓
+
+Prompt: 9-3-2=
+Output: 4 ✓
+
+Prompt: (7-9)*7=
+Output: -14 ✓
+
+Prompt: 8*0-3=
+Output: -3 ✓
+
+Prompt: 2*0+8=
+Output: 8 ✓
+
+Prompt: 8*(9-7)=
+Output: 16 ✓
+
+Prompt: 8+0+6=
+Output: 14 ✓
+
+
+Incorrect Predictions (Weaknesses):
+----------------------------------------------------------------------
+Prompt: 5-9=
+Output: -12 ✗
+Expected: -4
+
+Prompt: 7%9=
+Output: 6 ✗
+Expected: 7
+
+Prompt: 9+2=
+Output: 9 ✗
+Expected: 11
+
+Prompt: 7*3-7=
+Output: 16 ✗
+Expected: 14
+
+Prompt: 8*5-8=
+Output: 40 ✗
+Expected: 32
+
+Prompt: (6-6)+2=
+Output: 0 ✗
+Expected: 2
+
+Prompt: 81+17=
+Output: 108 ✗
+Expected: 98
+
+Prompt: 9-7*7=
+Output: -44 ✗
+Expected: -40
+
+Prompt: 5+2=
+Output: 5 ✗
+Expected: 7
+
+Prompt: 5-3=
+Output: 27 ✗
+Expected: 2
+

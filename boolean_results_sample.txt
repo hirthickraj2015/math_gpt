@@ -1,0 +1,43 @@
+======================================================================
+BOOLEAN GPT - SAMPLE PROMPT-OUTPUT PAIRS
+======================================================================
+
+Correct Predictions (Strengths):
+----------------------------------------------------------------------
+Prompt: NOT True AND True=
+Output: False ✓
+
+Prompt: (True XOR False) XOR False=
+Output: True ✓
+
+Prompt: False XOR True=
+Output: True ✓
+
+Prompt: (True OR False) OR False=
+Output: True ✓
+
+Prompt: NOT False=
+Output: True ✓
+
+Prompt: NOT False AND False=
+Output: False ✓
+
+Prompt: (False OR True) XOR False=
+Output: True ✓
+
+Prompt: False AND False=
+Output: False ✓
+
+Prompt: NOT True OR True=
+Output: True ✓
+
+Prompt: False OR False=
+Output: False ✓
+
+
+Incorrect Predictions (Weaknesses):
+----------------------------------------------------------------------
+Prompt: True OR False=
+Output: False ✗
+Expected: True
+

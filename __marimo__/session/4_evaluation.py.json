@@ -1,0 +1,316 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.18.4"
+  },
+  "cells": [
+    {
+      "id": "MJUe",
+      "code_hash": "4bcbfad5da307f37929a3ffc7d3cf964",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"comprehensive-evaluation-math-gpt-vs-boolean-gpt\">Comprehensive Evaluation - Math GPT vs Boolean GPT</h1>\n<h2 id=\"cs7cs4-machine-learning-final-assignment-2025-26\">CS7CS4 Machine Learning - Final Assignment 2025-26</h2>\n<span class=\"paragraph\">This notebook provides comprehensive evaluation and analysis for both transformer models,\ngenerating report-ready output that addresses all assignment tasks.</span>\n<hr />\n<h3 id=\"report-structure\">Report Structure:</h3>\n<ol>\n<li><strong>Task 1.2 &amp; 2.2</strong>: Evaluation Metrics Definition</li>\n<li><strong>Task 1.4</strong>: Math GPT - Operation-Specific Analysis</li>\n<li><strong>Task 2.4</strong>: Boolean GPT - Operation-Specific Analysis</li>\n<li><strong>Task 3.1</strong>: Critical Comparison and Discussion</li>\n</ol>\n<hr /></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "1ff83d689f32b52f29c60f8ed24b8407",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-1-defining-evaluation-metrics\">Part 1: Defining Evaluation Metrics</h2>\n<h3 id=\"task-12-22-appropriate-evaluation-metrics-8-marks-each\">Task 1.2 &amp; 2.2: Appropriate Evaluation Metrics (8 marks each)</h3>\n<span class=\"paragraph\"><strong>Question</strong>: What metrics are appropriate for evaluating symbolic reasoning models?</span>\n<span class=\"paragraph\"><strong>Answer</strong>:</span>\n<span class=\"paragraph\">For deterministic symbolic tasks like arithmetic and boolean logic, we employ multiple complementary metrics:</span>\n<h4 id=\"1-exact-match-accuracy\">1. Exact Match Accuracy</h4>\n<ul>\n<li><strong>Definition</strong>: Percentage of expressions where the predicted output exactly matches the expected result</li>\n<li><strong>Rationale</strong>: Symbolic reasoning is binary - answers are either completely correct or incorrect</li>\n<li><strong>Formula</strong>: <code>(Number of exact matches / Total predictions) \u00d7 100</code></li>\n</ul>\n<h4 id=\"2-character-level-accuracy\">2. Character-Level Accuracy</h4>\n<ul>\n<li><strong>Definition</strong>: Percentage of correctly predicted characters in the output</li>\n<li><strong>Rationale</strong>: Provides granular insight into partial correctness (e.g., \"42\" vs \"43\" is better than \"42\" vs \"87\")</li>\n<li><strong>Formula</strong>: <code>(Correctly predicted characters / Total characters) \u00d7 100</code></li>\n</ul>\n<h4 id=\"3-operation-specific-accuracy\">3. Operation-Specific Accuracy</h4>\n<ul>\n<li><strong>Definition</strong>: Accuracy broken down by operation type (addition, multiplication, AND, OR, etc.)</li>\n<li><strong>Rationale</strong>: Identifies which operations the model learns well vs. struggles with</li>\n<li><strong>Use</strong>: Guides architectural improvements and training data augmentation</li>\n</ul>\n<h4 id=\"4-error-pattern-analysis\">4. Error Pattern Analysis</h4>\n<ul>\n<li><strong>Definition</strong>: Categorization of failure modes (wrong length, empty output, off-by-one, etc.)</li>\n<li><strong>Rationale</strong>: Understanding how the model fails informs debugging and improvement strategies</li>\n</ul>\n<h4 id=\"5-generalization-metrics\">5. Generalization Metrics</h4>\n<ul>\n<li><strong>Definition</strong>: Performance on held-out test set vs. training performance</li>\n<li><strong>Rationale</strong>: Measures whether the model memorizes or actually learns operational patterns</li>\n</ul>\n<span class=\"paragraph\"><strong>Why These Metrics?</strong></span>\n<ul>\n<li>Arithmetic and boolean logic are <strong>deterministic</strong>: no ambiguity in correct answers</li>\n<li>These metrics provide both <strong>overall performance</strong> (exact match) and <strong>detailed diagnostics</strong> (operation-specific, error patterns)</li>\n<li>They align with the assignment's focus on understanding <strong>what works and what doesn't</strong></li>\n</ul>\n<hr /></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "b58f655c472fb066795fffc6735d5fbb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-2-load-models-and-datasets\">Part 2: Load Models and Datasets</h2>\n<span class=\"paragraph\">Loading the trained models and test datasets for evaluation.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "200fe9ac7b062736f2db6ebc46983685",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-3-task-14-math-gpt-operation-analysis\">Part 3: Task 1.4 - Math GPT Operation Analysis</h2>\n<h3 id=\"question-what-operations-are-learned-correctly-and-which-are-not-15-marks\">Question: What operations are learned correctly and which are not? (15 marks)</h3>\n<span class=\"paragraph\"><strong>Approach</strong>: Evaluate the model on the held-out test set and analyze performance by operation type.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "2920495e9bd135dcf4ac824e0aef1ee9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-4-task-24-boolean-gpt-operation-analysis\">Part 4: Task 2.4 - Boolean GPT Operation Analysis</h2>\n<h3 id=\"question-what-operations-are-learned-correctly-and-which-are-not-15-marks\">Question: What operations are learned correctly and which are not? (15 marks)</h3>\n<span class=\"paragraph\"><strong>Approach</strong>: Same methodology as Math GPT, applied to boolean logic operations.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "4d7d12369aeb200b8fd80c32a676bc26",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-5-task-31-critical-comparison-8-marks\">Part 5: Task 3.1 - Critical Comparison (8 marks)</h2>\n<h3 id=\"question-compare-math-gpt-and-boolean-gpt-what-architectural-elements-were-optimal-for-both-vs-required-adaptation\">Question: Compare Math GPT and Boolean GPT - what architectural elements were optimal for both vs. required adaptation?</h3>\n<span class=\"paragraph\">This section provides the critical analysis required for Task 3.1.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "a912b8b853ae18d700143e942867185d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-6-visualization\">Part 6: Visualization</h2>\n<span class=\"paragraph\">Comparative visualizations for the report.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "673552f566393b9b104645fc4371b0da",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"part-7-export-results-for-report\">Part 7: Export Results for Report</h2>\n<span class=\"paragraph\">Saving all evaluation results for the assignment report appendix.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "6215d504363000823e89394c35a96786",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Evaluation environment: cpu\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "ec7f1df7213b6854ba28003252aa119c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Model architecture defined\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Xref",
+      "code_hash": "7bd59260f7cff117853484d1a0d2ebc6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "\u2717 Math GPT model not found - train 2_math_gpt.py first\n\u2717 Boolean GPT model not found - train 3_boolean_gpt.py first\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "1bdd6ea289005dbcabab9dc7a5a2ea12",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Evaluation functions defined\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "69012d268ef1fef95d60b89f7bb724fe",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'acc' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'exp' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'inp' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'op' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'pred' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'stats' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "e4408188f82acb3efc9c4b6712343144",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'acc' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'exp' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'inp' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'op' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'pred' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'stats' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "ce834705f8b7da0f0e51a383421e37d8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "5443edf80043117b23cb3319593d0a01",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "13d2635bd689722bda04fd69b058de56",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}

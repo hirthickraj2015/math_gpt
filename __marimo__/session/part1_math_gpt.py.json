@@ -1,0 +1,223 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.18.4"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "18630fb2ec0e3f8c37697fac691fff67",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"part-1-math-gpt-arithmetic-expression-solver\">Part 1: Math GPT - Arithmetic Expression Solver</h1>\n<h2 id=\"cs7cs4-machine-learning-final-assignment-2025-26\">CS7CS4 Machine Learning - Final Assignment 2025-26</h2>\n<span class=\"paragraph\">This notebook implements a transformer-based model for solving arithmetic expressions. The implementation builds upon the nanoGPT architecture, adapted specifically for symbolic mathematical reasoning.</span>\n<h3 id=\"objectives\">Objectives:</h3>\n<ol>\n<li>Build appropriate training and testing datasets</li>\n<li>Define and implement evaluation metrics</li>\n<li>Explore architectural adaptations</li>\n<li>Analyze model performance across different arithmetic operations</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "0b7e713c543051df2ecdfb81a97910bf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"1-import-required-libraries-and-setup\">1. Import Required Libraries and Setup</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "000069a6eac1022d30fbaa9274eaa4f7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"2-hyperparameters-configuration\">2. Hyperparameters Configuration</h2>\n<span class=\"paragraph\">These hyperparameters were selected after experimentation to optimize performance for arithmetic tasks. The rationale for each choice is discussed in Section 5.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "8ab86a4c891ec701e6fcbec627e83dc7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"3-dataset-loading-and-preprocessing\">3. Dataset Loading and Preprocessing</h2>\n<h3 id=\"31-load-training-and-testing-data\">3.1 Load Training and Testing Data</h3>\n<span class=\"paragraph\">The dataset consists of arithmetic expressions in the format: <code>operand1 operator operand2 = result</code>.\nFor example: <code>15+7=22</code>, <code>(5*3)+2=17</code>, etc.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "a6c6a17d04c5e0b17a653dcf66edc65b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"32-character-level-tokenization\">3.2 Character-Level Tokenization</h3>\n<span class=\"paragraph\">We use character-level tokenization as it is well-suited for arithmetic expressions where each character (digit, operator, parenthesis) carries meaning.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "617b09996f5c67f92f9d20f0a7cffeb9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"33-prepare-train-and-test-datasets\">3.3 Prepare Train and Test Datasets</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "98adbb2ac3cd7ac8b3c5a6335e8bb118",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"4-model-architecture\">4. Model Architecture</h2>\n<span class=\"paragraph\">The GPT model consists of:</span>\n<ul>\n<li>Token and positional embeddings</li>\n<li>Multi-head self-attention layers</li>\n<li>Feed-forward networks</li>\n<li>Layer normalization</li>\n</ul>\n<span class=\"paragraph\">This architecture is adapted from the standard GPT design with hyperparameters tuned for arithmetic tasks.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "e69865bac69e373ef19c466162429500",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"5-training-infrastructure\">5. Training Infrastructure</h2>\n<h3 id=\"51-loss-estimation-and-checkpointing\">5.1 Loss Estimation and Checkpointing</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "23463c3223f5b2eb3e7405ac2b008dbb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"52-training-loop-with-progress-tracking\">5.2 Training Loop with Progress Tracking</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "a560886874fb7eaa8802dacafa65397e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"53-plot-training-progress\">5.3 Plot Training Progress</h3>\n<span class=\"paragraph\">Visualizing the training and test loss curves helps identify overfitting and convergence.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "f3b6aa44713676fe7a76a4d371e1d854",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"6-save-final-model-and-generate-report-materials\">6. Save Final Model and Generate Report Materials</h2>\n<span class=\"paragraph\">Save the trained model weights for submission and generate comprehensive evaluation materials.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "b3ef23bed04b68858943b6ee42e0e943",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "8e3eb618b44e18a5a0da1c58f96ae509",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "0c927231b8f852df5a1d84ab18082f55",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "94d76efec08b18ef8d1acd3e9be62b91",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "0d5fc451a682154d99dd151c752af11b",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "304dd31afb8e03fedb187675c843c2be",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "7a51a044e43192ded866826203fcfaa1",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "5c4ed66e1193b43b3f5ba65a6850c77a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "4f369eb5f0a380e2852304e3d25cd169",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "829069154386f65eb704c9fe550fbb69",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "ba9e1df5cd2c9e5e390d5003848531df",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
