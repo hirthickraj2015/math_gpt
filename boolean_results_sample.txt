@@ -4,40 +4,76 @@ BOOLEAN GPT - SAMPLE PROMPT-OUTPUT PAIRS
 
 Correct Predictions (Strengths):
 ----------------------------------------------------------------------
-Prompt: NOT True AND True=
+Prompt: (True OR False) OR (True OR False)=
+Output: True ✓
+
+Prompt: ((True AND False) AND False) AND False=
 Output: False ✓
 
-Prompt: (True XOR False) XOR False=
+Prompt: True OR True=
+Output: True ✓
+
+Prompt: True XOR False=
+Output: True ✓
+
+Prompt: (False AND True) OR False=
+Output: False ✓
+
+Prompt: NOT False OR True=
 Output: True ✓
 
 Prompt: False XOR True=
 Output: True ✓
 
-Prompt: (True OR False) OR False=
-Output: True ✓
-
-Prompt: NOT False=
-Output: True ✓
-
-Prompt: NOT False AND False=
+Prompt: ((False AND True) OR False) AND False=
 Output: False ✓
 
-Prompt: (False OR True) XOR False=
-Output: True ✓
-
-Prompt: False AND False=
+Prompt: False XOR False=
 Output: False ✓
 
-Prompt: NOT True OR True=
-Output: True ✓
-
-Prompt: False OR False=
+Prompt: True XOR True=
 Output: False ✓
 
 
 Incorrect Predictions (Weaknesses):
 ----------------------------------------------------------------------
-Prompt: True OR False=
+Prompt: False XOR True=
+Output: False ✗
+Expected: True
+
+Prompt: ((False OR False) XOR True) XOR False=
+Output: False ✗
+Expected: True
+
+Prompt: True OR ((False AND False) XOR False)=
+Output: False ✗
+Expected: True
+
+Prompt: NOT NOT False=
+Output: True ✗
+Expected: False
+
+Prompt: True AND ((False AND True) AND True)=
+Output: True ✗
+Expected: False
+
+Prompt: (True XOR True) OR (True OR True)=
+Output: False ✗
+Expected: True
+
+Prompt: ((True XOR True) OR False) XOR True=
+Output: False ✗
+Expected: True
+
+Prompt: (True XOR True) XOR True=
+Output: False ✗
+Expected: True
+
+Prompt: NOT NOT True=
+Output: False ✗
+Expected: True
+
+Prompt: True XOR ((False XOR True) OR False)=
 Output: False ✗
 Expected: True
 

@@ -1,0 +1,310 @@
+================================================================================
+APPENDIX: PROMPT-OUTPUT PAIRS
+Demonstrating Model Strengths and Weaknesses
+================================================================================
+
+PART 1: MATH GPT
+--------------------------------------------------------------------------------
+
+STRENGTHS (Correct Predictions):
+
+Addition:
+  Prompt:  47+47=
+  Output:  94 ✓
+
+  Prompt:  89+22=
+  Output:  111 ✓
+
+  Prompt:  0+7=
+  Output:  7 ✓
+
+Division:
+  Prompt:  6//4=
+  Output:  1 ✓
+
+  Prompt:  0//3=
+  Output:  0 ✓
+
+  Prompt:  8//2=
+  Output:  4 ✓
+
+Mixed Ops:
+  Prompt:  4+0*7=
+  Output:  4 ✓
+
+  Prompt:  6-0*7=
+  Output:  6 ✓
+
+  Prompt:  1*7+5=
+  Output:  12 ✓
+
+Modulo:
+  Prompt:  4%2=
+  Output:  0 ✓
+
+  Prompt:  1%8+3=
+  Output:  4 ✓
+
+  Prompt:  4%9=
+  Output:  4 ✓
+
+Multiplication:
+  Prompt:  1*9=
+  Output:  9 ✓
+
+  Prompt:  5*2=
+  Output:  10 ✓
+
+  Prompt:  0*0=
+  Output:  0 ✓
+
+Parentheses:
+  Prompt:  6*(6+0)=
+  Output:  36 ✓
+
+  Prompt:  (6*8)+8=
+  Output:  56 ✓
+
+  Prompt:  (5*1)+0=
+  Output:  5 ✓
+
+Subtraction:
+  Prompt:  78-35=
+  Output:  43 ✓
+
+  Prompt:  32-74=
+  Output:  -42 ✓
+
+  Prompt:  87-22=
+  Output:  65 ✓
+
+
+WEAKNESSES (Incorrect Predictions):
+
+Addition:
+  Prompt:   7+7=
+  Output:   13 ✗
+  Expected: 14
+
+  Prompt:   37+65=
+  Output:   92 ✗
+  Expected: 102
+
+  Prompt:   95+54=
+  Output:   139 ✗
+  Expected: 149
+
+Division:
+  Prompt:   1//2=
+  Output:   1 ✗
+  Expected: 0
+
+  Prompt:   9//2+1=
+  Output:   9 ✗
+  Expected: 5
+
+  Prompt:   6//1+5=
+  Output:   5 ✗
+  Expected: 11
+
+Mixed Ops:
+  Prompt:   8*5-9=
+  Output:   28 ✗
+  Expected: 31
+
+  Prompt:   7+4*3=
+  Output:   17 ✗
+  Expected: 19
+
+  Prompt:   6*2+6=
+  Output:   16 ✗
+  Expected: 18
+
+Modulo:
+  Prompt:   7%3=
+  Output:   0 ✗
+  Expected: 1
+
+  Prompt:   5%3=
+  Output:   0 ✗
+  Expected: 2
+
+  Prompt:   9%9+8=
+  Output:   17 ✗
+  Expected: 8
+
+Multiplication:
+  Prompt:   3*6=
+  Output:   24 ✗
+  Expected: 18
+
+  Prompt:   2*3=
+  Output:   4 ✗
+  Expected: 6
+
+  Prompt:   1*5=
+  Output:   3 ✗
+  Expected: 5
+
+Parentheses:
+  Prompt:   (4-4)*5=
+  Output:   10 ✗
+  Expected: 0
+
+  Prompt:   (2+5)*(1+1)=
+  Output:   20 ✗
+  Expected: 14
+
+  Prompt:   (2+2)-6=
+  Output:   -3 ✗
+  Expected: -2
+
+Subtraction:
+  Prompt:   25-16=
+  Output:   19 ✗
+  Expected: 9
+
+  Prompt:   8-6=
+  Output:   3 ✗
+  Expected: 2
+
+  Prompt:   28-19=
+  Output:   19 ✗
+  Expected: 9
+
+
+================================================================================
+
+PART 2: BOOLEAN GPT
+--------------------------------------------------------------------------------
+
+STRENGTHS (Correct Predictions):
+
+AND:
+  Prompt:  True AND False=
+  Output:  False ✓
+
+  Prompt:  True AND True=
+  Output:  True ✓
+
+  Prompt:  True AND True=
+  Output:  True ✓
+
+NOT:
+  Prompt:  NOT NOT False=
+  Output:  False ✓
+
+  Prompt:  NOT NOT NOT True=
+  Output:  False ✓
+
+  Prompt:  NOT NOT NOT True=
+  Output:  False ✓
+
+NOT Combined:
+  Prompt:  NOT False OR True=
+  Output:  True ✓
+
+  Prompt:  False AND NOT False=
+  Output:  False ✓
+
+  Prompt:  True XOR NOT True=
+  Output:  True ✓
+
+OR:
+  Prompt:  True OR True=
+  Output:  True ✓
+
+  Prompt:  False OR False OR False=
+  Output:  False ✓
+
+  Prompt:  False OR True=
+  Output:  True ✓
+
+Parentheses:
+  Prompt:  ((False OR False) XOR True) XOR False=
+  Output:  True ✓
+
+  Prompt:  True OR ((False AND False) XOR False)=
+  Output:  True ✓
+
+  Prompt:  (True OR False) OR (True OR False)=
+  Output:  True ✓
+
+XOR:
+  Prompt:  False XOR True=
+  Output:  True ✓
+
+  Prompt:  True XOR False=
+  Output:  True ✓
+
+  Prompt:  False XOR True=
+  Output:  True ✓
+
+
+WEAKNESSES (Incorrect Predictions):
+
+NOT:
+  Prompt:   NOT NOT True=
+  Output:   False ✗
+  Expected: True
+
+  Prompt:   NOT NOT True=
+  Output:   False ✗
+  Expected: True
+
+  Prompt:   NOT False=
+  Output:   False ✗
+  Expected: True
+
+NOT Combined:
+  Prompt:   NOT True AND True=
+  Output:   True ✗
+  Expected: False
+
+  Prompt:   NOT True XOR False=
+  Output:   True ✗
+  Expected: False
+
+  Prompt:   NOT False XOR False=
+  Output:   False ✗
+  Expected: True
+
+OR:
+  Prompt:   False OR False=
+  Output:   True ✗
+  Expected: False
+
+  Prompt:   True OR False=
+  Output:   False ✗
+  Expected: True
+
+  Prompt:   False OR False=
+  Output:   True ✗
+  Expected: False
+
+Parentheses:
+  Prompt:   True XOR ((True XOR True) OR True)=
+  Output:   True ✗
+  Expected: False
+
+  Prompt:   ((True XOR True) OR False) XOR True=
+  Output:   False ✗
+  Expected: True
+
+  Prompt:   (True OR False) XOR (False XOR True)=
+  Output:   True ✗
+  Expected: False
+
+XOR:
+  Prompt:   True XOR False=
+  Output:   False ✗
+  Expected: True
+
+  Prompt:   True XOR False OR True=
+  Output:   False ✗
+  Expected: True
+
+  Prompt:   True XOR True=
+  Output:   True ✗
+  Expected: False
+

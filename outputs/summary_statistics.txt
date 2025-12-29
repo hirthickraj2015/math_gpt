@@ -1,0 +1,35 @@
+EVALUATION SUMMARY STATISTICS
+======================================================================
+
+MATH GPT:
+  Exact Match Accuracy: 71.65%
+  Character-Level Accuracy: 76.63%
+  Expressions Evaluated: 2000
+  Correct Predictions: 1433
+  Incorrect Predictions: 567
+
+  Operation Breakdown:
+    addition: 82.9% (398/480)
+    division: 93.9% (201/214)
+    mixed_ops: 36.9% (52/141)
+    modulo: 91.2% (177/194)
+    multiplication: 81.9% (163/199)
+    parentheses: 26.4% (74/280)
+    subtraction: 74.8% (368/492)
+
+======================================================================
+
+BOOLEAN GPT:
+  Exact Match Accuracy: 89.20%
+  Character-Level Accuracy: 88.08%
+  Expressions Evaluated: 500
+  Correct Predictions: 446
+  Incorrect Predictions: 54
+
+  Operation Breakdown:
+    and: 100.0% (44/44)
+    not: 71.8% (51/71)
+    not_combined: 95.5% (21/22)
+    or: 95.7% (45/47)
+    parentheses: 89.3% (234/262)
+    xor: 94.4% (51/54)

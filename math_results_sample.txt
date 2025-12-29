@@ -4,76 +4,76 @@ MATH GPT - SAMPLE PROMPT-OUTPUT PAIRS
 
 Correct Predictions (Strengths):
 ----------------------------------------------------------------------
-Prompt: 6*(3+4)=
-Output: 42 ✓
+Prompt: 1*9=
+Output: 9 ✓
 
-Prompt: 0//8=
-Output: 0 ✓
-
-Prompt: 8//9=
-Output: 0 ✓
-
-Prompt: (1-8)*9=
-Output: -63 ✓
-
-Prompt: 9-3-2=
-Output: 4 ✓
-
-Prompt: (7-9)*7=
-Output: -14 ✓
-
-Prompt: 8*0-3=
-Output: -3 ✓
-
-Prompt: 2*0+8=
-Output: 8 ✓
-
-Prompt: 8*(9-7)=
-Output: 16 ✓
-
-Prompt: 8+0+6=
+Prompt: 7+7=
 Output: 14 ✓
+
+Prompt: 47+47=
+Output: 94 ✓
+
+Prompt: 6//4=
+Output: 1 ✓
+
+Prompt: 89+22=
+Output: 111 ✓
+
+Prompt: 0//3=
+Output: 0 ✓
+
+Prompt: 5*2=
+Output: 10 ✓
+
+Prompt: 78-35=
+Output: 43 ✓
+
+Prompt: 32-74=
+Output: -42 ✓
+
+Prompt: 0+7=
+Output: 7 ✓
 
 
 Incorrect Predictions (Weaknesses):
 ----------------------------------------------------------------------
-Prompt: 5-9=
-Output: -12 ✗
-Expected: -4
+Prompt: 25-16=
+Output: 29 ✗
+Expected: 9
 
-Prompt: 7%9=
-Output: 6 ✗
-Expected: 7
+Prompt: 8*5-9=
+Output: 30 ✗
+Expected: 31
 
-Prompt: 9+2=
+Prompt: 8//2=
+Output: 3 ✗
+Expected: 4
+
+Prompt: (4-4)*5=
 Output: 9 ✗
-Expected: 11
+Expected: 0
 
-Prompt: 7*3-7=
-Output: 16 ✗
+Prompt: 7+4*3=
+Output: 18 ✗
+Expected: 19
+
+Prompt: (2+5)*(1+1)=
+Output: 21 ✗
 Expected: 14
 
-Prompt: 8*5-8=
-Output: 40 ✗
-Expected: 32
+Prompt: 5-4=
+Output: 13 ✗
+Expected: 1
 
-Prompt: (6-6)+2=
-Output: 0 ✗
-Expected: 2
+Prompt: (2+2)-6=
+Output: -1 ✗
+Expected: -2
 
-Prompt: 81+17=
-Output: 108 ✗
-Expected: 98
+Prompt: (3+4)+9=
+Output: 17 ✗
+Expected: 16
 
-Prompt: 9-7*7=
-Output: -44 ✗
-Expected: -40
-
-Prompt: 5+2=
-Output: 5 ✗
-Expected: 7
-
-Prompt: 5-3=
-Output: 27 ✗
-Expected: 2
+Prompt: (3+2)*(4+1)=
+Output: 22 ✗
+Expected: 25
 
